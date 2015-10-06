@@ -1,8 +1,7 @@
 var React = require("react");
-
-var ChatMessage = require("./components/ChatMessage.react.js");
+var ChatApp = require("./components/ChatApp.react.js");
 
 React.render(
-  <ChatMessage />,
+  <ChatApp />,
   document.getElementById("reactive-chat-app")
 );
