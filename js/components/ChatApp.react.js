@@ -24,13 +24,23 @@ var ChatApp = React.createClass({
       ]
     };
   },
-  onReactMessageClick: function(index) {
+  componentDidMount: function() {
+    // PHASE: ASK
+    this.addMessage({
+      text: "question... ?",
+      isBot: true
+    });
+  },
+  addMessage: function(message) {
     this.setState(function(previousState, _) {
-      previousState.chatMessages.push({
-        text: index,
-        isBot: false
-      });
+      previousState.chatMessages.push(message);
       return previousState;
+    });
+  },
+  onReactMessageClick: function(index) {
+    this.addMessage({
+      text: index,
+      isBot: false
     });
   },
   render: function() {
