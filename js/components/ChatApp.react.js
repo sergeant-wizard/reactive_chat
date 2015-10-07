@@ -39,11 +39,11 @@ var ChatApp = React.createClass({
     });
     setTimeout(
       function() {
+        this.setState({isBotTalking: true});
         this.addMessage({
           text: "yet another question",
           isBot: true
         });
-        this.setState({isBotTalking: true});
       }.bind(this),
       1500
     );
