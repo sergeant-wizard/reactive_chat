@@ -3,6 +3,9 @@ var ChatMessageList = require("./ChatMessageList.react.js");
 var MessageInput = require("./MessageInput.react.js");
 
 var ChatApp = React.createClass({
+  onReactMessageClick: function(index) {
+    alert(index);
+  },
   render: function() {
     var reactMessages = [
       "yeah",
@@ -15,7 +18,10 @@ var ChatApp = React.createClass({
           <ChatMessageList />
         </div></div>
         <div className="row"><div className="col-md-12">
-          <MessageInput reactMessages={reactMessages} />
+          <MessageInput
+            reactMessages={reactMessages}
+            handleReaction={this.onReactMessageClick}
+          />
         </div></div>
       </div>
     );
