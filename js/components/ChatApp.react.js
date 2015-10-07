@@ -12,16 +12,8 @@ var ChatApp = React.createClass({
         "maybe",
         "nope"
       ],
-      chatMessages: [
-        {
-          text: "message 1",
-          isBot: true
-        },
-        {
-          text: "message 2",
-          isBot: false
-        }
-      ]
+      chatMessages: [],
+      isReactButtonVisible: false
     };
   },
   componentDidMount: function() {
@@ -43,16 +35,25 @@ var ChatApp = React.createClass({
       isBot: false
     });
   },
+  onAnimationEnd: function() {
+    this.setState(function(previousState, _) {
+      previousState.isReactButtonVisible = true;
+      return previousState;
+    });
+  },
   render: function() {
     return (
       <div className="container">
         <div className="row"><div className="col-md-12">
-          <ChatMessageList messages={this.state.chatMessages} />
+          <ChatMessageList
+            messages={this.state.chatMessages}
+            onAnimationEnd={this.onAnimationEnd} />
         </div></div>
         <div className="row"><div className="col-md-12">
           <MessageInput
             reactMessages={this.state.reactMessages}
             handleReaction={this.onReactMessageClick}
+            isVisible={this.state.isReactButtonVisible}
           />
         </div></div>
       </div>

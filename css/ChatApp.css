@@ -1,23 +1,8 @@
-.fadeIn-appear {
+.visible {
+  opacity: 1;
+  transition: opacity .5s ease;
+}
+
+.invisible {
   opacity: 0;
-}
-
-.fadeIn-appear.leftMessage {
-  margin-right: 100px;
-}
-
-.fadeIn-appear.rightMessage {
-  margin-left: 100px;
-}
-
-.fadeIn-appear.fadeIn-appear-active.leftMessage {
-  opacity: 1;
-  margin-right: 0px;
-  transition: margin-right .5s ease, opacity .5s ease;
-}
-
-.fadeIn-appear.fadeIn-appear-active.rightMessage {
-  opacity: 1;
-  margin-left: 0px;
-  transition: margin-left .5s ease, opacity .5s ease;
 }

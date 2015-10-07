@@ -2,7 +2,6 @@
 
 var React = require('react/addons');
 var ReactTransitionGroup = React.addons.TransitionGroup;
-var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
 function messageRow(params) {
   this.initialCSS = params.initialCSS;
@@ -35,7 +34,7 @@ function messageRow(params) {
         );
       },
       componentDidAppear: function() {
-        console.log("didAppear");
+        this.props.onAnimationEnd();
       },
       render: function() {
         return messageRow.getContent(this.props.text);
@@ -91,7 +90,9 @@ var ChatMessage = React.createClass({
     return (
       <div className="container">
         <ReactTransitionGroup transitionName="fadeIn" transitionAppear={true}>
-          <MessageComponent text={this.props.text} />
+          <MessageComponent
+            text={this.props.text}
+            onAnimationEnd={this.props.onAnimationEnd} />
         </ReactTransitionGroup>
       </div>
     );

@@ -3,12 +3,14 @@ var ChatMessage = require("./ChatMessage.react.js");
 
 var ChatMessageList = React.createClass({
   render: function() {
+    var bindedOnAnimationEnd = this.props.onAnimationEnd;
     var messageNodes = this.props.messages.map(function (message, index) {
       return (
         <ChatMessage
         key={index}
         text={message.text}
-        isBot={message.isBot} />
+        isBot={message.isBot}
+        onAnimationEnd={bindedOnAnimationEnd} />
       );
     });
     return (

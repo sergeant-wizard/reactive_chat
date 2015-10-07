@@ -1,10 +1,17 @@
 "use strict";
 
 var React = require('react');
+var ReactTransitionGroup = React.addons.TransitionGroup;
 
 var MessageInput = React.createClass({
+  getInitialProps: function() {
+    return {isVisible: false};
+  },
   onClick: function(index) {
     this.props.handleReaction(index);
+  },
+  componentDidAppear: function() {
+    console.log("aoeu");
   },
   render: function() {
     var bindedOnClick = function(index) {
@@ -17,8 +24,14 @@ var MessageInput = React.createClass({
         </button>
       );
     });
+    var className = "btn-group pull-right";
+    if (this.props.isVisible) {
+      className += " visible";
+    } else {
+      className += " invisible";
+    }
     return (
-      <div className="btn-group pull-right" role="group">
+      <div className={className} role="group">
         {reactButtons}
       </div>
     );
