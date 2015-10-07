@@ -1,9 +1,21 @@
-@keyframes fadeIn {
-  from {opacity: 0; line-height: 0%}
-  to {opacity: 1; line-height: 100%}
+@keyframes fadeInRight {
+  from {opacity: 0; margin-left: 100px}
+  to {opacity: 1; margin-left: 0px}
+}
+
+@keyframes fadeInLeft {
+  from {opacity: 0; margin-right: 100px}
+  to {opacity: 1; margin-right: 0px}
 }
 
 div.chatMessage {
   opacity: 1;
-  animation: fadeIn 0.25s ease;
+}
+
+div.leftMessage {
+  animation: fadeInLeft 0.25s ease;
+}
+
+div.rightMessage {
+  animation: fadeInRight 0.25s ease;
 }

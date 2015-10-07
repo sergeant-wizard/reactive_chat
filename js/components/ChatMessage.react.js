@@ -2,10 +2,20 @@
 
 var React = require('react');
 
+function getChatMessageClass(isBot) {
+  var chatMessageClass = "well chatMessage";
+  if (isBot) {
+    chatMessageClass += " leftMessage";
+  } else {
+    chatMessageClass += " rightMessage";
+  }
+  return chatMessageClass;
+}
+
 function getMessageRow(text, isBot) {
   var mainMessageCol = (
     <div className="col-md-9 col-xs-9">
-      <div className="well chatMessage" ref="message">
+      <div className={getChatMessageClass(isBot)} ref="message">
         {text}
       </div>
     </div>
