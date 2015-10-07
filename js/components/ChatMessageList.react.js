@@ -1,5 +1,5 @@
 var React = require('react');
-// var ChatMessage = require("./ChatMessage.react.js");
+var ChatMessage = require("./ChatMessage.react.js");
 
 var ChatMessageList = React.createClass({
   render: function() {
@@ -9,7 +9,9 @@ var ChatMessageList = React.createClass({
     ];
     var messageNodes = messages.map(function (message, index) {
       return (
-        <div key={index}>{message}</div>
+        <ChatMessage
+        key={index}
+        message={message} />
       );
     });
     return (

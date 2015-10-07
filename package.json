@@ -6,7 +6,8 @@
   "main": "lib/index.js",
   "dependencies": {
     "browserify": "^6.2.0",
-    "react": "0.13.3"
+    "react": "0.13.3",
+    "bootstrap": "3.3.5"
   },
   "devDependencies": {
     "reactify": "^0.15.2",

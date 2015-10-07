@@ -1,10 +1,15 @@
 var React = require('react');
 
 var ChatMessage = React.createClass({
+  getInitialState: function() {
+    return {
+      message: ""
+    };
+  },
   render: function() {
     return (
       <div>
-        Aeosutnh
+        {this.props.message}
       </div>
     );
   }
