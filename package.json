@@ -5,9 +5,10 @@
   "description": "chat inteface based on react",
   "main": "lib/index.js",
   "dependencies": {
+    "bootstrap": "3.3.5",
     "browserify": "^6.2.0",
-    "react": "0.13.3",
-    "bootstrap": "3.3.5"
+    "jquery": "^2.1.4",
+    "react": "0.13.3"
   },
   "devDependencies": {
     "reactify": "^0.15.2",

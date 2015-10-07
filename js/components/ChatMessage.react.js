@@ -1,3 +1,5 @@
+"use strict";
+
 var React = require('react');
 
 var ChatMessage = React.createClass({
@@ -8,7 +10,7 @@ var ChatMessage = React.createClass({
   },
   render: function() {
     return (
-      <div>
+      <div className="well">
         {this.props.message}
       </div>
     );
