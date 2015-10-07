@@ -24,6 +24,12 @@ function messageRow(params) {
   this.getComponent = function() {
     var messageRow = this;
     return React.createClass({
+      scrollToBottom: function() {
+        $('html, body').animate(
+          {"scrollTop": $(document).height() - $(window).height()},
+          100
+        );
+      },
       componentWillAppear: function(callback) {
         var DOMNode = $(this.getDOMNode());
         DOMNode.css(messageRow.initialCSS);
@@ -32,6 +38,7 @@ function messageRow(params) {
           250,
           callback
         );
+        this.scrollToBottom();
       },
       componentDidAppear: function() {
         this.props.onAnimationEnd();
