@@ -3,17 +3,7 @@ var ChatMessage = require("./ChatMessage.react.js");
 
 var ChatMessageList = React.createClass({
   render: function() {
-    var messages = [
-      {
-        text: "message 1",
-        isBot: true
-      },
-      {
-        text: "message 2",
-        isBot: false
-      }
-    ];
-    var messageNodes = messages.map(function (message, index) {
+    var messageNodes = this.props.messages.map(function (message, index) {
       return (
         <ChatMessage
         key={index}
