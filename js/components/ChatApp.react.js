@@ -30,13 +30,23 @@ var ChatApp = React.createClass({
       return previousState;
     });
   },
-  onReactMessageClick: function(index) {
+  onReactMessageClick: function(text) {
     // PHASE: PAUSE AND THINK
     this.setState({isReactButtonVisible: false});
     this.addMessage({
-      text: index,
+      text: text,
       isBot: false
     });
+    setTimeout(
+      function() {
+        this.addMessage({
+          text: "yet another question",
+          isBot: true
+        });
+        this.setState({isBotTalking: true});
+      }.bind(this),
+      1500
+    );
   },
   onAnimationEnd: function() {
     if (this.state.isBotTalking) {
@@ -48,7 +58,6 @@ var ChatApp = React.createClass({
         1000
       );
       this.setState({isBotTalking: false});
-    } else {
     }
   },
   render: function() {

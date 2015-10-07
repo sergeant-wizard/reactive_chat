@@ -10,16 +10,13 @@ var MessageInput = React.createClass({
   onClick: function(index) {
     this.props.handleReaction(index);
   },
-  componentDidAppear: function() {
-    console.log("aoeu");
-  },
   render: function() {
-    var bindedOnClick = function(index) {
-      return this.onClick.bind(this, index);
+    var bindedOnClick = function(text) {
+      return this.onClick.bind(this, text);
     }.bind(this);
     var reactButtons = this.props.reactMessages.map(function (reactMessage, index) {
       return (
-        <button type="button" className="btn btn-default" key={index} onClick={bindedOnClick(index)}>
+        <button type="button" className="btn btn-default" key={index} onClick={bindedOnClick(reactMessage)}>
           {reactMessage}
         </button>
       );
