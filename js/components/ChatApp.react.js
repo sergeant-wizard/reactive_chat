@@ -13,7 +13,8 @@ var ChatApp = React.createClass({
         "nope"
       ],
       chatMessages: [],
-      isReactButtonVisible: false
+      isReactButtonVisible: false,
+      isBotTalking: true
     };
   },
   componentDidMount: function() {
@@ -30,16 +31,25 @@ var ChatApp = React.createClass({
     });
   },
   onReactMessageClick: function(index) {
+    // PHASE: PAUSE AND THINK
+    this.setState({isReactButtonVisible: false});
     this.addMessage({
       text: index,
       isBot: false
     });
   },
   onAnimationEnd: function() {
-    this.setState(function(previousState, _) {
-      previousState.isReactButtonVisible = true;
-      return previousState;
-    });
+    if (this.state.isBotTalking) {
+      // PHASE: WAIT FOR REACTION INPUT
+      setTimeout(
+        function() {
+          this.setState({isReactButtonVisible: true});
+        }.bind(this),
+        1000
+      );
+      this.setState({isBotTalking: false});
+    } else {
+    }
   },
   render: function() {
     return (
