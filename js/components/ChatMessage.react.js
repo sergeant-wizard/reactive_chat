@@ -30,12 +30,12 @@ function messageRow(params) {
         DOMNode.css(messageRow.initialCSS);
         DOMNode.animate(
           messageRow.animatedCSS,
-          250
+          250,
+          callback
         );
-        callback();
       },
       componentDidAppear: function() {
-        console.log("did appear");
+        console.log("didAppear");
       },
       render: function() {
         return messageRow.getContent(this.props.text);
