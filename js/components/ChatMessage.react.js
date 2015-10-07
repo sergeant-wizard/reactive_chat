@@ -5,7 +5,7 @@ var React = require('react');
 function getMessageRow(text, isBot) {
   var mainMessageCol = (
     <div className="col-md-9 col-xs-9">
-      <div className="well">
+      <div className="well chatMessage" ref="message">
         {text}
       </div>
     </div>

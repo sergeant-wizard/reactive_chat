@@ -1,0 +1,9 @@
+@keyframes fadeIn {
+  from {opacity: 0; line-height: 0%}
+  to {opacity: 1; line-height: 100%}
+}
+
+div.chatMessage {
+  opacity: 1;
+  animation: fadeIn 0.25s ease;
+}
