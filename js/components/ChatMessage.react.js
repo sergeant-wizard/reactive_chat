@@ -89,7 +89,7 @@ var ChatMessage = React.createClass({
     var MessageComponent = messageRow.getComponent();
     return (
       <div className="container">
-        <ReactTransitionGroup transitionName="fadeIn" transitionAppear={true}>
+        <ReactTransitionGroup>
           <MessageComponent
             text={this.props.text}
             onAnimationEnd={this.props.onAnimationEnd} />
