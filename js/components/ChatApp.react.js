@@ -6,12 +6,12 @@ var ChatApp = React.createClass({
   render: function() {
     return (
       <div className="container">
-        <div className="row">
+        <div className="row"><div className="col-md-12">
           <ChatMessageList />
-        </div>
-        <div className="row">
+        </div></div>
+        <div className="row"><div className="col-md-12">
           <MessageInput />
-        </div>
+        </div></div>
       </div>
     );
   }
