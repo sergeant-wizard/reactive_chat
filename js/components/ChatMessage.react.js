@@ -1,9 +1,10 @@
 "use strict";
 
-var React = require('react');
+var React = require('react/addons');
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
 function getChatMessageClass(isBot) {
-  var chatMessageClass = "well chatMessage";
+  var chatMessageClass = "well";
   if (isBot) {
     chatMessageClass += " leftMessage";
   } else {
@@ -13,11 +14,14 @@ function getChatMessageClass(isBot) {
 }
 
 function getMessageRow(text, isBot) {
+  // note that the key attribute is required for ReactCSSTransitionGroup
   var mainMessageCol = (
     <div className="col-md-9 col-xs-9">
-      <div className={getChatMessageClass(isBot)} ref="message">
-        {text}
-      </div>
+      <ReactCSSTransitionGroup transitionName="fadeIn" transitionAppear={true}>
+        <div key="1" className={getChatMessageClass(isBot)}>
+          {text}
+        </div>
+      </ReactCSSTransitionGroup>
     </div>
   );
   var messageSpacerCol = (
