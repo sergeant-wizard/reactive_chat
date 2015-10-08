@@ -1,3 +1,4 @@
+var $ = require('jquery');
 const BotThinkTime = 1500;
 const ReactInputDelay = 1000;
 
