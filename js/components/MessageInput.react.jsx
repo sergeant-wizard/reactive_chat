@@ -1,26 +1,23 @@
 "use strict";
 
-var React = require('react');
+let React = require('react');
 
-var MessageInput = React.createClass({
-  getInitialProps: function() {
+let MessageInput = React.createClass({
+  getInitialProps() {
     return {isVisible: false};
   },
-  onClick: function(index) {
+  onClick(index) {
     this.props.handleReaction(index);
   },
-  render: function() {
-    var bindedOnClick = function(text) {
-      return this.onClick.bind(this, text);
-    }.bind(this);
-    var reactButtons = this.props.reactMessages.map(function (reactMessage, index) {
+  render() {
+    let reactButtons = this.props.reactMessages.map((reactMessage, index) => {
       return (
-        <button type="button" className="btn btn-default" key={index} onClick={bindedOnClick(reactMessage)}>
+        <button type="button" className="btn btn-default" key={index} onClick={this.onClick.bind(this, reactMessage)}>
           {reactMessage}
         </button>
       );
     });
-    var className = "btn-group pull-right";
+    let className = "btn-group pull-right";
     if (this.props.isVisible) {
       className += " visible";
     } else {
