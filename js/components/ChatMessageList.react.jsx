@@ -1,10 +1,10 @@
-var React = require('react');
-var ChatMessage = require("./ChatMessage.react.jsx");
+let React = require('react');
+let ChatMessage = require("./ChatMessage.react.jsx");
 
-var ChatMessageList = React.createClass({
-  render: function() {
-    var bindedOnAnimationEnd = this.props.onAnimationEnd;
-    var messageNodes = this.props.messages.map(function (message, index) {
+let ChatMessageList = React.createClass({
+  render() {
+    let bindedOnAnimationEnd = this.props.onAnimationEnd;
+    let messageNodes = this.props.messages.map((message, index) => {
       return (
         <ChatMessage
         key={index}
