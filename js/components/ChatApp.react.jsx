@@ -1,11 +1,11 @@
 "use strict";
 
-var React = require('react');
-var ChatMessageList = require("./ChatMessageList.react.jsx");
-var MessageInput = require("./MessageInput.react.jsx");
+let React = require('react');
+let ChatMessageList = require("./ChatMessageList.react.jsx");
+let MessageInput = require("./MessageInput.react.jsx");
 
-var ChatApp = React.createClass({
-  getInitialState: function() {
+let ChatApp = React.createClass({
+  getInitialState() {
     return {
       reactMessages: [
         "yeah",
@@ -17,20 +17,20 @@ var ChatApp = React.createClass({
       isBotTalking: true
     };
   },
-  componentDidMount: function() {
+  componentDidMount() {
     // PHASE: ASK
     this.addMessage({
       text: "question... ?",
       isBot: true
     });
   },
-  addMessage: function(message) {
+  addMessage(message) {
     this.setState(function(previousState, _) {
       previousState.chatMessages.push(message);
       return previousState;
     });
   },
-  onReactMessageClick: function(text) {
+  onReactMessageClick(text) {
     // PHASE: PAUSE AND THINK
     this.setState({isReactButtonVisible: false});
     this.addMessage({
@@ -48,7 +48,7 @@ var ChatApp = React.createClass({
       1500
     );
   },
-  onAnimationEnd: function() {
+  onAnimationEnd() {
     if (this.state.isBotTalking) {
       // PHASE: WAIT FOR REACTION INPUT
       setTimeout(
@@ -60,7 +60,7 @@ var ChatApp = React.createClass({
       this.setState({isBotTalking: false});
     }
   },
-  render: function() {
+  render() {
     return (
       <div className="container">
         <div className="row"><div className="col-md-12">

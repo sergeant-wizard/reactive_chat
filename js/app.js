@@ -1,6 +1,6 @@
-var React = require("react");
-var ReactDOM = require('react-dom');
-var ChatApp = require("./components/ChatApp.react.jsx");
+let React = require("react");
+let ReactDOM = require('react-dom');
+let ChatApp = require("./components/ChatApp.react.jsx");
 
 ReactDOM.render(
   <ChatApp />,
