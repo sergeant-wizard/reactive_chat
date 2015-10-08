@@ -67,7 +67,7 @@ class LeftMessageRow extends MessageRow {
     return (
       <div className="row">
         {MessageRow.messageCol(text)}
-        {this.messageSpacerCol}
+        {MessageRow.messageSpacerCol()}
       </div>
     );
   }
@@ -90,7 +90,7 @@ class RightMessageRow extends MessageRow {
   getContent(text) {
     return (
       <div className="row">
-        {this.messageSpacerCol}
+        {MessageRow.messageSpacerCol()}
         {MessageRow.messageCol(text)}
       </div>
     );
