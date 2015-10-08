@@ -1,8 +1,8 @@
 "use strict";
 
-var React = require('react');
-var ReactDOM = require('react-dom');
-var ReactTransitionGroup = require('react-addons-transition-group');
+let React = require('react');
+let ReactDOM = require('react-dom');
+let ReactTransitionGroup = require('react-addons-transition-group');
 
 function messageRow(params) {
   this.initialCSS = params.initialCSS;
@@ -22,17 +22,17 @@ function messageRow(params) {
       </div>
     );
   };
-  this.getComponent = function() {
-    var messageRow = this;
+  this.getComponent = () => {
+    let messageRow = this;
     return React.createClass({
-      scrollToBottom: function() {
+      scrollToBottom() {
         $('html, body').animate(
           {"scrollTop": $(document).height() - $(window).height()},
           100
         );
       },
-      componentWillAppear: function(callback) {
-        var DOMNode = $(ReactDOM.findDOMNode(this));
+      componentWillAppear(callback) {
+        let DOMNode = $(ReactDOM.findDOMNode(this));
         DOMNode.css(messageRow.initialCSS);
         DOMNode.animate(
           messageRow.animatedCSS,
@@ -41,7 +41,7 @@ function messageRow(params) {
         );
         this.scrollToBottom();
       },
-      componentDidAppear: function() {
+      componentDidAppear() {
         this.props.onAnimationEnd();
       },
       render: function() {
@@ -61,7 +61,7 @@ var leftMessageRow = new messageRow({
     "opacity": 1,
     "left": "0px",
   },
-  getContent: function(text) {
+  getContent(text) {
     return (
       <div className="row">
         {this.getMessageCol(text)}
@@ -71,7 +71,7 @@ var leftMessageRow = new messageRow({
   }
 });
 
-var rightMessageRow = new messageRow({
+let rightMessageRow = new messageRow({
   initialCSS: {
     "opacity": 0,
     "left": "100px",
@@ -81,7 +81,7 @@ var rightMessageRow = new messageRow({
     "opacity": 1,
     "left": "0px"
   },
-  getContent: function(text) {
+  getContent(text) {
     return (
       <div className="row">
         {this.messageSpacerCol}
@@ -91,10 +91,10 @@ var rightMessageRow = new messageRow({
   }
 });
 
-var ChatMessage = React.createClass({
-  render: function() {
-    var messageRow = this.props.isBot === true ? leftMessageRow : rightMessageRow;
-    var MessageComponent = messageRow.getComponent();
+let ChatMessage = React.createClass({
+  render() {
+    let messageRow = this.props.isBot === true ? leftMessageRow : rightMessageRow;
+    let MessageComponent = messageRow.getComponent();
     return (
       <div className="container">
         <ReactTransitionGroup>
