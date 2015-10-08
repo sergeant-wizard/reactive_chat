@@ -1,5 +1,5 @@
 var React = require('react');
-var ChatMessage = require("./ChatMessage.react.js");
+var ChatMessage = require("./ChatMessage.react.jsx");
 
 var ChatMessageList = React.createClass({
   render: function() {

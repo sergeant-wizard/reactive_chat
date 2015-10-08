@@ -1,8 +1,8 @@
 "use strict";
 
 var React = require('react');
-var ChatMessageList = require("./ChatMessageList.react.js");
-var MessageInput = require("./MessageInput.react.js");
+var ChatMessageList = require("./ChatMessageList.react.jsx");
+var MessageInput = require("./MessageInput.react.jsx");
 
 var ChatApp = React.createClass({
   getInitialState: function() {
