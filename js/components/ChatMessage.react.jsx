@@ -4,16 +4,8 @@ let React = require('react');
 let ReactDOM = require('react-dom');
 let ReactTransitionGroup = require('react-addons-transition-group');
 
-function messageRow(params) {
-  this.initialCSS = params.initialCSS;
-  this.animatedCSS = params.animatedCSS;
-  this.render = params.render;
-  this.getContent = params.getContent;
-  this.messageSpacerCol = (
-    <div className="col-md-3 col-xs-3">
-    </div>
-  );
-  this.getMessageCol = function(text) {
+class MessageRow {
+  static messageCol(text) {
     return (
       <div className="col-md-9 col-xs-9">
         <div className="well">
@@ -21,8 +13,14 @@ function messageRow(params) {
         </div>
       </div>
     );
-  };
-  this.getComponent = () => {
+  }
+  static messageSpacerCol() {
+    return (
+      <div className="col-md-3 col-xs-3">
+      </div>
+    );
+  }
+  component() {
     let messageRow = this;
     return React.createClass({
       scrollToBottom() {
@@ -44,57 +42,71 @@ function messageRow(params) {
       componentDidAppear() {
         this.props.onAnimationEnd();
       },
-      render: function() {
+      render() {
         return messageRow.getContent(this.props.text);
       }
     });
-  };
+  }
 }
 
-var leftMessageRow = new messageRow({
-  initialCSS: {
-    "opacity": 0,
-    "left": "-100px",
-    "position": "relative"
-  },
-  animatedCSS: {
-    "opacity": 1,
-    "left": "0px",
-  },
+class LeftMessageRow extends MessageRow {
+  get initialCSS() {
+    return {
+      "opacity": 0,
+      "left": "-100px",
+      "position": "relative"
+    };
+  }
+  get animatedCSS() {
+    return {
+      "opacity": 1,
+      "left": "0px",
+    };
+  }
   getContent(text) {
     return (
       <div className="row">
-        {this.getMessageCol(text)}
+        {MessageRow.messageCol(text)}
         {this.messageSpacerCol}
       </div>
     );
   }
-});
+}
 
-let rightMessageRow = new messageRow({
-  initialCSS: {
-    "opacity": 0,
-    "left": "100px",
-    "position": "relative"
-  },
-  animatedCSS: {
-    "opacity": 1,
-    "left": "0px"
-  },
+class RightMessageRow extends MessageRow {
+  get initialCSS() {
+    return {
+      "opacity": 0,
+      "left": "100px",
+      "position": "relative"
+    }
+  }
+  get animatedCSS() {
+    return {
+      "opacity": 1,
+      "left": "0px"
+    }
+  }
   getContent(text) {
     return (
       <div className="row">
         {this.messageSpacerCol}
-        {this.getMessageCol(text)}
+        {MessageRow.messageCol(text)}
       </div>
     );
   }
-});
+}
 
 let ChatMessage = React.createClass({
   render() {
-    let messageRow = this.props.isBot === true ? leftMessageRow : rightMessageRow;
-    let MessageComponent = messageRow.getComponent();
+    let getMessageRow = (isBot) => {
+      if (isBot) {
+        return new LeftMessageRow();
+      } else {
+        return new RightMessageRow();
+      }
+    };
+    let MessageComponent = getMessageRow(this.props.isBot).component();
     return (
       <div className="container">
         <ReactTransitionGroup>
