@@ -1,10 +1,19 @@
 "use strict";
 
+const BotThinkTime = 1500;
+const ReactInputDelay = 1000;
+
 let React = require('react');
+let ReactDOM = require('react-dom');
 let ChatMessageList = require("./ChatMessageList.react.jsx");
 let MessageInput = require("./MessageInput.react.jsx");
 
 let ChatApp = React.createClass({
+  callAfterDelay(duration, callback) {
+    $(ReactDOM.findDOMNode(this)).stop().delay(duration).queue(() => {
+      callback();
+    });
+  },
   getInitialState() {
     return {
       reactMessages: [
@@ -37,26 +46,20 @@ let ChatApp = React.createClass({
       text: text,
       isBot: false
     });
-    setTimeout(
-      function() {
-        this.setState({isBotTalking: true});
-        this.addMessage({
-          text: "yet another question",
-          isBot: true
-        });
-      }.bind(this),
-      1500
-    );
+    this.callAfterDelay(BotThinkTime, () => {
+      this.setState({isBotTalking: true});
+      this.addMessage({
+        text: "yet another question",
+        isBot: true
+      });
+    });
   },
   onAnimationEnd() {
     if (this.state.isBotTalking) {
       // PHASE: WAIT FOR REACTION INPUT
-      setTimeout(
-        function() {
-          this.setState({isReactButtonVisible: true});
-        }.bind(this),
-        1000
-      );
+      this.callAfterDelay(ReactInputDelay, () => {
+        this.setState({isReactButtonVisible: true});
+      });
       this.setState({isBotTalking: false});
     }
   },
