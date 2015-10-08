@@ -1,5 +1,3 @@
-"use strict";
-
 const BotThinkTime = 1500;
 const ReactInputDelay = 1000;
 
