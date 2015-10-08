@@ -3,16 +3,14 @@
 const BotThinkTime = 1500;
 const ReactInputDelay = 1000;
 
-let React = require('react');
-let ReactDOM = require('react-dom');
-let ChatMessageList = require("./ChatMessageList.react.jsx");
-let MessageInput = require("./MessageInput.react.jsx");
+const React = require('react');
+const ReactDOM = require('react-dom');
+const ChatMessageList = require("./ChatMessageList.react.jsx");
+const MessageInput = require("./MessageInput.react.jsx");
 
-let ChatApp = React.createClass({
+const ChatApp = React.createClass({
   callAfterDelay(duration, callback) {
-    $(ReactDOM.findDOMNode(this)).stop().delay(duration).queue(() => {
-      callback();
-    });
+    $(ReactDOM.findDOMNode(this)).stop().delay(duration).queue(callback);
   },
   getInitialState() {
     return {
@@ -34,7 +32,7 @@ let ChatApp = React.createClass({
     });
   },
   addMessage(message) {
-    this.setState(function(previousState, _) {
+    this.setState((previousState, _) => {
       previousState.chatMessages.push(message);
       return previousState;
     });

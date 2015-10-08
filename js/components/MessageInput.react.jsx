@@ -1,8 +1,8 @@
 "use strict";
 
-let React = require('react');
+const React = require('react');
 
-let MessageInput = React.createClass({
+const MessageInput = React.createClass({
   getInitialProps() {
     return {isVisible: false};
   },
@@ -10,7 +10,7 @@ let MessageInput = React.createClass({
     this.props.handleReaction(index);
   },
   render() {
-    let reactButtons = this.props.reactMessages.map((reactMessage, index) => {
+    const reactButtons = this.props.reactMessages.map((reactMessage, index) => {
       return (
         <button type="button" className="btn btn-default" key={index} onClick={this.onClick.bind(this, reactMessage)}>
           {reactMessage}

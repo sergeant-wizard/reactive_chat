@@ -1,8 +1,8 @@
 "use strict";
 
-let React = require('react');
-let ReactDOM = require('react-dom');
-let ReactTransitionGroup = require('react-addons-transition-group');
+const React = require('react');
+const ReactDOM = require('react-dom');
+const ReactTransitionGroup = require('react-addons-transition-group');
 
 class MessageRow {
   static messageCol(text) {
@@ -21,7 +21,7 @@ class MessageRow {
     );
   }
   component() {
-    let messageRow = this;
+    const messageRow = this;
     return React.createClass({
       scrollToBottom() {
         $('html, body').animate(
@@ -30,7 +30,7 @@ class MessageRow {
         );
       },
       componentWillAppear(callback) {
-        let DOMNode = $(ReactDOM.findDOMNode(this));
+        const DOMNode = $(ReactDOM.findDOMNode(this));
         DOMNode.css(messageRow.initialCSS);
         DOMNode.animate(
           messageRow.animatedCSS,
@@ -97,16 +97,16 @@ class RightMessageRow extends MessageRow {
   }
 }
 
-let ChatMessage = React.createClass({
+const ChatMessage = React.createClass({
   render() {
-    let getMessageRow = (isBot) => {
+    const getMessageRow = (isBot) => {
       if (isBot) {
         return new LeftMessageRow();
       } else {
         return new RightMessageRow();
       }
     };
-    let MessageComponent = getMessageRow(this.props.isBot).component();
+    const MessageComponent = getMessageRow(this.props.isBot).component();
     return (
       <div className="container">
         <ReactTransitionGroup>
