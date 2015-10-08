@@ -1,7 +1,6 @@
 "use strict";
 
 var React = require('react');
-var ReactTransitionGroup = React.addons.TransitionGroup;
 
 var MessageInput = React.createClass({
   getInitialProps: function() {

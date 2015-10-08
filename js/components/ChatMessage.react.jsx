@@ -1,7 +1,8 @@
 "use strict";
 
-var React = require('react/addons');
-var ReactTransitionGroup = React.addons.TransitionGroup;
+var React = require('react');
+var ReactDOM = require('react-dom');
+var ReactTransitionGroup = require('react-addons-transition-group');
 
 function messageRow(params) {
   this.initialCSS = params.initialCSS;
@@ -31,7 +32,7 @@ function messageRow(params) {
         );
       },
       componentWillAppear: function(callback) {
-        var DOMNode = $(this.getDOMNode());
+        var DOMNode = $(ReactDOM.findDOMNode(this));
         DOMNode.css(messageRow.initialCSS);
         DOMNode.animate(
           messageRow.animatedCSS,
