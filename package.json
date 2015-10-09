@@ -12,13 +12,17 @@
     "react-dom": "^0.14.0"
   },
   "devDependencies": {
-    "reactify": "^0.15.2",
-    "watchify": "^2.1.1",
-    "envify": "^3.0.0",
+    "babel-jest": "^5.3.0",
+    "babelify": "^6.3.0",
     "browserify": "^6.2.0",
-    "babelify": "^6.3.0"
+    "envify": "^3.0.0",
+    "jest-cli": "^0.5.10",
+    "react-addons-test-utils": "^0.14.0",
+    "reactify": "^0.15.2",
+    "watchify": "^2.1.1"
   },
   "scripts": {
+    "test": "jest",
     "start": "http-server",
     "watch": "watchify -t babelify -o js/bundle.js -v -d js/app.js",
     "build": "browserify -t babelify -o js/bundle.js js/app.js"
@@ -29,5 +33,11 @@
       "envify"
     ]
   },
-  "author": "Ryo Miyajima"
+  "author": "Ryo Miyajima",
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
+    "testFileExtensions": ["es6", "js"],
+    "moduleFileExtensions": ["js", "json", "es6"],
+    "unmockedModulePathPatterns": ["<rootDir>/node_modules/react"]
+  }
 }

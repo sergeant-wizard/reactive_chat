@@ -1,5 +1,4 @@
-"use strict";
-
+var $ = require('jquery');
 const React = require('react');
 const ReactDOM = require('react-dom');
 const ReactTransitionGroup = require('react-addons-transition-group');
